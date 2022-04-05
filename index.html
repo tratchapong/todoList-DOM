@@ -21,7 +21,6 @@
         <button
           class="btn btn-outline-secondary"
           type="button"
-          onclick="addJob(Math.random())"
         >
           Add
         </button>
@@ -34,19 +33,36 @@
       crossorigin="anonymous"
     ></script>
     <script>
-    
+
+    let list = [
+        { id: 1, jobName: "Practice HTML", status: "undone" },
+        { id: 2, jobName: "Practice CSS", status: "undone" },
+        { id: 3, jobName: "Practice Javascript", status: "undone" },
+        { id: 4, jobName: "Practice Git", status: "undone" },
+    ];  
+
       function addJob(jobText) {
         jobItem = `<div class="input-group mb-3">
         <div class="input-group-text">
           <input class="form-check-input mt-0" type="checkbox" value="" />
         </div>
-        <input type="text" class="form-control" value=${jobText}>
+        <input type="text" class="form-control" value="${jobText}">
         <button class="btn btn-outline-secondary" type="button">Edit</button>
         <button class="btn btn-outline-secondary" type="button">Delete</button>
       </div>`;
       let todoContainer = document.querySelector('.todo-container')
       todoContainer.innerHTML += jobItem
       }
+
+      function render() {
+        list.forEach(x => {
+          addJob(x.jobName)
+      })
+      }
+
+      render()
+ 
+
     </script>
   </body>
 </html>
