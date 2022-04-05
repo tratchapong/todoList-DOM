@@ -48,10 +48,15 @@
         </div>
         <input type="text" class="form-control" value="${jobText}">
         <button class="btn btn-outline-secondary" type="button">Edit</button>
-        <button class="btn btn-outline-secondary" type="button">Delete</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="delJob(this)">Delete</button>
       </div>`;
       let todoContainer = document.querySelector('.todo-container')
       todoContainer.innerHTML += jobItem
+      }
+
+      function delJob(item) {
+          console.log(item.parentElement)
+          item.parentElement.remove()
       }
 
       function render() {
