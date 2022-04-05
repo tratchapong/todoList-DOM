@@ -41,7 +41,7 @@
         { id: 4, jobName: "Practice Git", status: "undone" },
     ];  
 
-      function addJob_old(jobText) {
+      function addJob(jobText) {
         jobItem = `<div class="input-group mb-3">
         <div class="input-group-text">
           <input class="form-check-input mt-0" type="checkbox" value="" />
@@ -54,53 +54,14 @@
       todoContainer.innerHTML += jobItem
       }
 
-      function renderJob(item) {
-        let target = document.body.firstElementChild
-        let divInputGroup = document.createElement("div");
-        divInputGroup.classList.add("input-group", "my-2");
-          let divGroupText = document.createElement('div')
-          divGroupText.classList.add('input-group-text')
-            let inputCheckbox = document.createElement('input')
-            inputCheckbox.classList.add('form-check-input', 'mt-0')
-            inputCheckbox.setAttribute('type','checkbox')
-          let inputText = document.createElement("input");
-          inputText.classList.add("form-control");
-          inputText.setAttribute("type", "text");
-          inputText.setAttribute("readonly", "");
-          inputText.value = item.jobName
-
-          let btnEdit = document.createElement("button");
-          btnEdit.classList.add("btn", "btn-outline-secondary");
-          btnEdit.innerText = "Edit";
-          btnEdit.setAttribute("type", "button");
-          btnEdit.addEventListener("click", () => editJob(x.id));
-
-          let btnDel = document.createElement("button");
-          btnDel.classList.add("btn", "btn-outline-secondary");
-          btnDel.innerText = "Delete";
-          btnDel.setAttribute("type", "button");
-          btnDel.addEventListener("click", () => deleteJob(x.id));
-      
-        divGroupText.appendChild(inputCheckbox)
-        divInputGroup.appendChild(divGroupText)
-        divInputGroup.appendChild(inputText)
-        divInputGroup.appendChild(btnEdit)
-        divInputGroup.appendChild(btnDel)  
-
-        target.appendChild(divInputGroup)
-      }
-
-      function deleteJob(id) {
-
-      }
-
-      function editJob(id) {
-
+      function delJob(item) {
+          console.log(item.parentElement)
+          item.parentElement.remove()
       }
 
       function render() {
         list.forEach(x => {
-          renderJob(x)
+          addJob(x.jobName)
       })
       }
 
