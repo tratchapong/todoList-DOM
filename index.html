@@ -14,19 +14,17 @@
     <title>TodoList DOM</title>
   </head>
   <body>
-    <div class="container-md border mt-3">
+    <div class="container-md border mt-3 todo-container">
       <p class="bg-info display-5">TodoList with pure DOM</p>
       <div class="input-group input-group-lg mb-3">
         <input type="text" class="form-control" />
-        <button class="btn btn-outline-secondary" type="button">Add</button>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="" />
-        </div>
-        <input type="text" class="form-control" />
-        <button class="btn btn-outline-secondary" type="button">Edit</button>
-        <button class="btn btn-outline-secondary" type="button">Delete</button>
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          onclick="addJob(Math.random())"
+        >
+          Add
+        </button>
       </div>
     </div>
 
@@ -35,6 +33,20 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script></script>
+    <script>
+    
+      function addJob(jobText) {
+        jobItem = `<div class="input-group mb-3">
+        <div class="input-group-text">
+          <input class="form-check-input mt-0" type="checkbox" value="" />
+        </div>
+        <input type="text" class="form-control" value=${jobText}>
+        <button class="btn btn-outline-secondary" type="button">Edit</button>
+        <button class="btn btn-outline-secondary" type="button">Delete</button>
+      </div>`;
+      let todoContainer = document.querySelector('.todo-container')
+      todoContainer.innerHTML += jobItem
+      }
+    </script>
   </body>
 </html>
