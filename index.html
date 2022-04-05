@@ -17,10 +17,11 @@
     <div class="container-md border mt-3 todo-container">
       <p class="bg-info display-5">TodoList with pure DOM</p>
       <div class="input-group input-group-lg mb-3">
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" id="newjob" />
         <button
           class="btn btn-outline-secondary"
           type="button"
+          onclick="addJob()"
         >
           Add
         </button>
@@ -40,19 +41,6 @@
         { id: 3, jobName: "Practice Javascript", status: "undone" },
         { id: 4, jobName: "Practice Git", status: "undone" },
     ];  
-
-      function addJob_old(jobText) {
-        jobItem = `<div class="input-group mb-3">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="" />
-        </div>
-        <input type="text" class="form-control" value="${jobText}">
-        <button class="btn btn-outline-secondary" type="button">Edit</button>
-        <button class="btn btn-outline-secondary" type="button" onclick="delJob(this)">Delete</button>
-      </div>`;
-      let todoContainer = document.querySelector('.todo-container')
-      todoContainer.innerHTML += jobItem
-      }
 
       function renderJob(item) {
         let target = document.body.firstElementChild
@@ -88,6 +76,21 @@
         divInputGroup.appendChild(btnDel)  
 
         target.appendChild(divInputGroup)
+      }
+
+      function addJob() {
+        let newJobText = document.querySelector("#newjob").value;
+        if (newJobText === null || newJobText.trim() === "") return;    // let student try
+        let newJob = {
+          id: list.length > 0 ? list[list.length - 1].id + 1 : 1,     
+          jobName: newJobText,
+          status: "undone"
+        }
+        list.push(newJob);
+        renderJob(newJob)
+        // render();
+        document.querySelector("#newjob").value = "";
+        document.querySelector("#newjob").select();
       }
 
       function deleteJob(id) {
