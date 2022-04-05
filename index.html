@@ -87,8 +87,8 @@
           status: "undone"
         }
         list.push(newJob);
-        renderJob(newJob)
-        // render();
+        // renderJob(newJob)
+        render();
         document.querySelector("#newjob").value = "";
         document.querySelector("#newjob").select();
       }
@@ -101,7 +101,15 @@
 
       }
 
+      function clearElement() {
+        let target= document.querySelector('.todo-container')
+        while (target.children[2]) {
+          target.removeChild(target.children[2]);
+        }
+      }
+
       function render() {
+        clearElement()
         list.forEach(x => {
           renderJob(x)
       })
