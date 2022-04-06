@@ -67,7 +67,7 @@
           btnDel.classList.add("btn", "btn-outline-secondary");
           btnDel.innerText = "Delete";
           btnDel.setAttribute("type", "button");
-          btnDel.addEventListener("click", () => deleteJob(x.id));
+          btnDel.addEventListener("click", () => deleteJob(item.id));
       
         divGroupText.appendChild(inputCheckbox)
         divInputGroup.appendChild(divGroupText)
@@ -93,8 +93,10 @@
         document.querySelector("#newjob").select();
       }
 
-      function deleteJob(id) {
-
+      function deleteJob(del_id) {
+        console.log(del_id);
+        list = [...list.filter((x) => x.id !== del_id)];
+        render();
       }
 
       function editJob(id) {
